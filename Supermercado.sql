@@ -86,3 +86,68 @@ WHERE Produto.codpro IS NULL;
 UPDATE Produto
 SET precoUnit = precoUnit + 1,05
 WHERE estoque < 400.0;
+
+-- Update preço
+UPDATE produto SET preco = preco * 0.85
+WHERE codcat = 1
+
+-- Funções de agregação
+-- MAX = retorna valor máximo
+SELECT MAX(estoque) AS maiorEstoque
+FROM produto
+
+-- MIN = retorna valor mínimp
+SELECT MIN(estoque) AS menorEstoque
+FROM produto
+
+-- MAX + MIN
+SELECT MAX(estoque) AS maiorEstoque MIN(estoque) AS menorEstoque
+FROM produto
+
+-- SUM = retona a soma
+SELECT SUM(preco) AS precoTotal
+FROM produto
+
+SELECT SUM (estoque * preco) AS ValorTotalEstoque
+FROM produto
+
+-- CAMPO CALCULADO -> não é uma fução de aggregação
+SELECT descricao, preco, estoque * preco
+FROM produto -- Retorna o valor em estoque de cada produto
+
+-- AVG = calcula a média
+SELECT AVG(preco) as PrecoMedio
+FROM produto
+
+-- ROUND = arredonda
+SELECT ROUND(12345.6789, 2) -- Usa o ponto como vírgula -> padrão americano
+-- Arredondou para dois números depois da vírgula
+
+SELECT ROUND(AVG(preco), 2) AS PrecoMedio
+FROM produto
+
+-- COUNT = conta o número de ocorrências
+SELECT COUNT (descricao)
+FROM produto
+
+SELECT COUNT (codCat) AS contagem
+FROM produto
+
+SELECT COUNT(*) AS contagem -- Conta campos não nulos -> PK
+FROM produto
+
+-- SUBTRAÇÃO NO SELECT
+SELECT COUNT(*) - COUNT(codCat) AS totalSemCategoria
+FROM produto
+
+-- MULTIPLICAÇÃO PARA CRIAR CAMPO CALCULADO
+-- Qual seria o novo preço se aplicasse 10% de acréscimo?
+SELECT descricao, preco, preco * 1.10 AS precoReajustado
+FROM produto
+
+
+
+-- DISTINCT: Selecionar linhas exclusivas
+-- EX: Se quiser o primeiro nome dos alunos, os nomes iguais não ficam repetindo
+SELECT DISTINCT (codCat) AS categoriasProdutos
+FROM produto
