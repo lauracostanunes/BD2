@@ -43,9 +43,9 @@ SELECT descricao, codbarra, estoque
 FROM Produto
 WHERE estoque > 500.0;
 
-DELETE * FROM ProdutoWHERE codcat = 3;
+DELETE * FROM Produto WHERE codcat = 3; -- Ou DELETE Produto WHERE codcat = 3
 
-INSERT INTO Produto (descricao, estoque) VALUES
+INSERT INTO Produto (descricao, estoque, codCat) VALUES
 	('SHAMPOO', 55.0, 2);
 
 ALTER TABLE Produto DROP COLUMN codbarra;
