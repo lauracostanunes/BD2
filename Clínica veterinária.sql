@@ -1,5 +1,5 @@
 CREATE DATABASE ClinicaVet
-
+GO
 USE ClinicaVet
 
 CREATE TABLE Veterinario(
@@ -94,6 +94,7 @@ SELECT COUNT() AS consultasRealizadas FROM
     Veterinario AS V INNER JOIN Consulta AS C
     ON V.codMed = C.codMed
         WHERE V.nome = 'LAURA'
+    -- SELECT CPUNT(*) AS QTDcONSULTAS from Consulta WHERE codMed = 3
 
 -- 10. QUANTAS CONSULTAS FORAM REALIZADAS (TOTAL)
 SELECT COUNT() AS totalConsultas FROM Consulta
@@ -104,12 +105,14 @@ SELECT DISTINCT (espécie) FROM Animal
 -- 12. NOMES DOS PACIENTES EM ORDEM ALFABÉTICA
 SELECT nomeAnimal FROM Animal
 ORDER BY nomeAnimal ASC
+    -- ORDER BY especie, nom e-> Ordenação por mais de um campo
 
 -- 13. VALOR TOTAL DAS CONSULTAS FEITAS POR VOCÊ
 SELECT SUM(valor) AS totalConsultasLaura
 FROM Consulta C
 INNER JOIN Veterinario V ON C.codMed = V.codMed
 WHERE V.nome = 'DRA. LAURA'
+    -- SELECT SUM(valor) AS ValorTotal FROM Consulta WHERE codMed = 3
 
 -- 14. QUANTIDADE DE MÉDICOS DA CLÍNICA
 SELECT COUNT() AS qntMedicos FROM Veterinario
@@ -119,6 +122,7 @@ SELECT SUM(valor  1.10) AS totalComAumento
 FROM Consulta C
 INNER JOIN Veterinario V ON C.codMed = V.codMed
 WHERE V.nome = 'DRA. LAURA'
+    -- SELECT valor, valor * 1.1 AS valorAumento FROM Consulta WHERE CodMed = 3
 
 -- 16. CONSULTAS DA LAURA ENTRE 01012026 E 31032026
 SELECT COUNT() AS consultasTrimestre
@@ -126,3 +130,4 @@ FROM Consulta C
 INNER JOIN Veterinario V ON C.codMed = V.codMed
 WHERE V.nome = 'DRA. LAURA' 
 AND C.dataCons BETWEEN '2026-01-01' AND '2026-03-31'
+ -- SELECT COUNT(*) as contagemConsultas FROM Consulta WHERE codMed = 3 AND dataCon >= '2026/01/01' OR dataCon <= '2026/03/31'
