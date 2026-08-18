@@ -130,4 +130,4 @@ FROM Consulta C
 INNER JOIN Veterinario V ON C.codMed = V.codMed
 WHERE V.nome = 'DRA. LAURA' 
 AND C.dataCons BETWEEN '2026-01-01' AND '2026-03-31'
- -- SELECT COUNT(*) as contagemConsultas FROM Consulta WHERE codMed = 3 AND dataCon >= '2026/01/01' OR dataCon <= '2026/03/31'
+ -- SELECT COUNT(*) as contagemConsultas FROM Consulta WHERE codMed = 3 AND dataCon >= '2026/01/01' AND dataCon <= '2026/03/31'
