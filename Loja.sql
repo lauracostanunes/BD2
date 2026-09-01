@@ -45,4 +45,14 @@ CREATE TABLE ItemPedido (
  
     -- 6. Se o preço de um item vendido é superior a 1000, então a quantidade vendida tem de ser menor que 100.
     CONSTRAINT chk_precoQtde CHECK(vl_unit <= 1000 OR qtde < 100)
-)
+
+    -- create table itemPedido (
+        -- id_pedido int CONSTRAINT fk_item_ped
+        --  foreign key REFERENCES Pedido(id_pedido),
+        -- id_pro int CONSTRAINT fk_item_pro
+        --    foreign key REFERENCES produto(id_pro),
+        -- qntde int,
+        -- vl_unit money,
+        -- CONSTRAINT pk_itemPedido PRIMARY key (id_pedido, id_pro), --> PK composta
+        -- Constraint CH_preco_qtde check (vl_unit > 100 and qtde < 100) OR (vl_unit <= 100)
+-- )
