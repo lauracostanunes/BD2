@@ -7,6 +7,11 @@ CREATE TABLE TB_CLIENTE (
     -- a. Um atributo código do tipo inteiro;
     -- 2.a. O atributo código representa a chave primária da tabela;
     codigo INT NOT NULL CONSTRAINT pk_codigo PRIMARY KEY IDENTITY(1,1)
+    -- No SQLServer, não pode cusar identity se for com alter table
+    -- O professor criou a tabela e fez com alter table
+    -- alter table tb_cliente
+    --    add
+    --        constraint pk_cliente primary key (cod)
 
     -- b. Um atributo nome do tipo cadeia de caracteres de tamanho 50;
     nome VARCHAR(50) NOT NULL
@@ -17,14 +22,24 @@ CREATE TABLE TB_CLIENTE (
     -- d. Um atributo tipo_cliente do tipo cadeia de caracteres de tamanho 20;
     -- 2.c. O atributo tipo_cliente deve ser "Titular" ou "Dependente";
     tipo_cliente VARCHAR(20) NOT NULL CONSTRAINT chk_tipoCliente CHECK(tipo_cliente IN('Titular', 'Dependente'))
+    -- alter table tb_cliente
+    --    add
+    --    constraint chk_Cliente check ((tipo_cliente = 'Titular') OR (tipo_cliente = 'De3pendente'))
 
     -- e. Um atributo dt_cadastro do tipo data e hora;
     -- 2.b. O atributo dt_cadastro deve ter como valor padrão (default) a data e hora atual do sistema;
     dt_cadastro DATETIME NOT NULL CONSTRAINT df_dtCadastro DEFAULT(GETDATE())
+    -- alter table tb_cliente
+    --  add
+    --  constraint df_data default (getdate()) for dt_cadastro
 
     -- f. Um atributo nr_dependentes do tipo inteiro.
     -- 2.d. O atributo nr_dependentes deve ser um inteiro maior ou igual a 0 e menor ou igual a 3.
-    nr_dependentes  INT             NOT NULL CONSTRAINT chk_nrDependentes CHECK(nr_dependentes BETWEEN 0 AND 3)
+    nr_dependentes INT NOT NULL CONSTRAINT chk_nrDependentes CHECK(nr_dependentes BETWEEN 0 AND 3)
+    -- Aqui dava para fazer com or
+    -- alter table tb_cliente
+    --  add
+    --  constraint chk_nrDependentes check ((nr_dependentes >= 0) OR (nr_dependentes <= 3))
 )
 
 
