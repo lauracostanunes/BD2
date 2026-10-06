@@ -78,3 +78,28 @@ where CodDepto IN (select CodDepto -- Tem que deixar só um campo, não pode ser
                   Where Funcao = 'SUPERVISOR')
 
 -- 10. 
+
+-- 11. Liste o salário médio pago pela empresa
+SELECT avg(salario) as MediaSalarial
+FROM func
+
+-- 12. Liste a quantidade de funcionários que trabalham em cada departamento
+select d.nome as Depto, count(*) as QtdeFuncionarios
+FROM func f inner join depto d
+      on f.CodDepto = d.CodDepto
+GROUP BY d.nome
+
+-- 13. Liste o menor salário pago pela empresa em cada departamento
+SELECT d.nome as Depto, min(salario) as MenorSalDepto
+FROM func f inner join depto d on f.CodDepto = d.CodDepto
+GROUP BY d.nome
+
+-- 14. a) Liste o nome completo de todos os funcionários que não tenham segundo nome
+select PrimeiroNome, UltimoNome
+from func
+where isnull(SegundoNome, '') ='' -- isnull junto é uma função
+
+-- 14. b) Liste os nomes dos funcionários e os nomes de seus gerentes
+select F.PrimeiroNome as nomeFunc, G.PrimeiroNome as nomeGerente
+from func as F inner join func as G
+      on F.CodFunc = G.CodigoFuncionarioGerente
