@@ -103,3 +103,11 @@ where isnull(SegundoNome, '') ='' -- isnull junto é uma função
 select F.PrimeiroNome as nomeFunc, G.PrimeiroNome as nomeGerente
 from func as F inner join func as G
       on F.CodFunc = G.CodigoFuncionarioGerente
+      -- Aqui o professor confundiu a estrutura da tabela
+
+-- 14. b) Corrigida
+select F.PrimeiroNome as nomeFunc, G.PrimeiroNome as nomeGerente
+from func as F inner join Depto as D
+      on F.CodDepto = D.CodDepto
+            INNER JOIN func as G
+      ON F.CodFunc = G.CodDepto
