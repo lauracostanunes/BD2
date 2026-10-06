@@ -111,3 +111,8 @@ from func as F inner join Depto as D
       on F.CodDepto = D.CodDepto
             INNER JOIN func as G
       ON F.CodFunc = G.CodDepto
+
+-- 15. Liste os departamentos que possuem mais de três funcionários
+-- 16. Liste o nome do departamento e do funcionário ordenados por departamento e funcionário
+-- 17. Liste os nomes dos funcionários que moram em Recife e que exerçam a função telefonista
+-- 18. Liste a localização do departamento e os nomes dos funcionários que trabalham no departamento pessoal
