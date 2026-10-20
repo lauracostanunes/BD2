@@ -57,3 +57,33 @@ where
        status = 'Ativo' and
        data_nasc < '1995/01/01'
 
+create view pp
+as
+select nome, profissao, cidade, uf
+from participantewhere status = 'ativo'
+
+create view viewex5
+as
+select p.nome as nomeParticipante, pr.nome as nomePrato, pr.dificuldade
+from participante as p inner join prato as pr
+on p.id = pr.id_participante
+where dificuldade = 'difícil'
+
+
+create view viewex6
+as
+select p.nome as nomePrato, i.nome as nome.Ingred, categoria, quantidade, unidade_medida
+from prato as p inner join utiliza as u on  p.id = u.id_prato
+                inner join ingrediente as i on i.id = u.id_ingrediente
+
+select pa.nome as nomeParticipante, pr.nome as nomePrato, po.nome as nomeProva
+from participante as pa inner join prato as pr on pa.id = pr.id_participante
+                                 inner join prova as po on po.id = pr.id_prova
+where pa.status = 'Ativo' and PO.tipo = 'Eliminação'
+
+select pa.nome as nomeParticipante, pr.nome as nomePrato, i.nome as nomeIngrediente
+from participanteas pa inner join prato as pr on pa.id = pr.id_participante
+                       inner join utiliza as u on pr.id = u.id_prato
+                       inner join ingrediente as i on i.id = u.id_ingrediente
+where i.categoria = 'Laticínios'
+order by pa.nome
